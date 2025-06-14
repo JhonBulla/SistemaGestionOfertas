@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SistemaGestionOfertas.Models.DTO.JobOfferDto>
+
+@{
+    ViewData["Title"] = "Administrador de Ofertas";
+}
+
+@section Scripts {
+    <script src="~/js/JobOffer.js"></script>
+}
+
+@Html.AntiForgeryToken()
+
+<h1>Administrador de Ofertas de Empleo</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Ciudad</th>
+            <th>Dirección</th>
+            <th>Tipo de contrato</th>
+            <th>Salario oculto</th>
+            <th>Salario</th>
+            <th>Vence</th>
+            <th>Publicada</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var offer in Model)
+        {
+            <tr>
+                <td>@offer.Title</td>
+                <td>@offer.CityName</td>
+                <td>@offer.Address</td>
+                <td>@offer.ContractTypeName</td>
+                <td>
+                    @if (offer.HideSalary)
+                    {
+                        <span>Si</span>
+                    }
+                    else
+                    {
+                        <span>No</span>
+                    }
+                </td>
+                <td>@offer.SalaryRange</td>
+                <td>@offer.ExpirationTimeName</td>
+                <td>@offer.PublishedAt?.ToShortDateString()</td>
+                <td>
+                    <a href="@Url.Action("Edit", "JobOffer", new { id = offer.Id })" class="btn btn-info btn-sm">Editar</a>
+                    <button class="btn btn-danger btn-sm delete-offer" data-id="@offer.Id">Eliminar</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "JobOffer")" class="btn btn-primary">Nueva Oferta</a>
