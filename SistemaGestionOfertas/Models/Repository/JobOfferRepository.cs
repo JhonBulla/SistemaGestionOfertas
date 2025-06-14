@@ -38,7 +38,7 @@ namespace SistemaGestionOfertas.Models.Repository
         /// <returns>Colección de ofertas de la base de datos.</returns>
         public IEnumerable<JobOffer> GetJobOffers()
         {
-            return modelContext.JobOffers.Include(x => x.City).ThenInclude(c => c.Department)
+            return modelContext.JobOffers.Include(x => x.City).ThenInclude(x => x.Department)
                  .Include(x => x.Salary).Include(x => x.ContractType)
                  .Include(x => x.ExpirationTime).Where(x => !x.IsDeleted).ToList();
         }

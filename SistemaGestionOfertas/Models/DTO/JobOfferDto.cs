@@ -15,7 +15,7 @@ namespace SistemaGestionOfertas.Models.DTO
         /// <summary>
         /// Título de la oferta.
         /// </summary>
-        public string? Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         /// <summary>
         /// Descripción de la oferta.

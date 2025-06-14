@@ -102,7 +102,7 @@ namespace SistemaGestionOfertas.Models.JobOffers
         /// Esta propiedad permite acceder al objeto <c>City</c> asociado a esta oferta.
         /// </remarks>
         [ForeignKey("IdCity")]
-        public virtual City? City { get; set; }
+        public virtual City City { get; set; } = null!;
 
         /// <summary>
         /// Representa la relación de navegación entre la oferta y el salario.
