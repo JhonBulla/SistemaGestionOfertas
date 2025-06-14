@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using SistemaGestionOfertas.Data;
 using SistemaGestionOfertas.Models.Interfaces;
 using SistemaGestionOfertas.Models.JobOffers;
@@ -101,8 +102,9 @@ namespace SistemaGestionOfertas.Models.Repository
         /// Elimina una oferta de la base de datos.
         /// </summary>
         /// <param name="id">Identificador de la oferta</param>
+        /// <param name="userId">Identificador del usuario que eliminó la oferta</param>
         /// <returns><c>True</c> si realiza la eliminacion de forma exitosa</returns>
-        public bool DeleteJobOffer(int id)
+        public bool DeleteJobOffer(int id, int userId)
         {
             var jobOffer = modelContext.JobOffers.Find(id);
             if (jobOffer != null)
@@ -110,6 +112,7 @@ namespace SistemaGestionOfertas.Models.Repository
                 try
                 {
                     jobOffer.IsDeleted = true;
+                    jobOffer.IdUserWhoModifiedIt = userId;
                     jobOffer.UpdatedAt = DateTime.Now;
                     modelContext.SaveChanges();
                     return true;

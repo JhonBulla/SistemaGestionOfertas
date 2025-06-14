@@ -61,7 +61,8 @@ namespace SistemaGestionOfertasWebApi.Controllers
                     Id = x.Id,
                     Name = x.Name,
                     Email = x.Email,
-                    Password = x.Password
+                    Password = x.Password,
+                    Role = x.Role
                 }).ToList();
                 if (usersDto == null)
                 {
@@ -105,7 +106,8 @@ namespace SistemaGestionOfertasWebApi.Controllers
                     Id = user.Id,
                     Name = user.Name,
                     Email = user.Email,
-                    Password = user.Password
+                    Password = user.Password,
+                    Role = user.Role
                 };
                 return Ok(user);
             }
@@ -143,7 +145,8 @@ namespace SistemaGestionOfertasWebApi.Controllers
                     {
                         Name = userDto.Name,
                         Email = userDto.Email,
-                        Password = userDto.Password
+                        Password = userDto.Password,
+                        Role = userDto.Role
                     };
 
                     if (userRepository.AddUser(user))

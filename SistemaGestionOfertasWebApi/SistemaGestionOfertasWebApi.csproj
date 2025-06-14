@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SistemaGestionUsuarios\SistemaGestionOfertas.csproj" />
+    <ProjectReference Include="..\SistemaGestionOfertas\SistemaGestionOfertas.csproj" />
   </ItemGroup>
 
 </Project>

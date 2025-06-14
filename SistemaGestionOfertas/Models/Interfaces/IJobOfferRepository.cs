@@ -46,8 +46,9 @@ namespace SistemaGestionOfertas.Models.Interfaces
         /// Elimina una oferta de la base de datos.
         /// </summary>
         /// <param name="id">Identificador de la oferta</param>
+        /// <param name="userId">Identificador del usuario que eliminó la oferta</param>
         /// <returns><c>True</c> si realiza la eliminacion de forma exitosa</returns>
-        bool DeleteJobOffer(int id);
+        bool DeleteJobOffer(int id, int userId);
         #endregion
     }
 }

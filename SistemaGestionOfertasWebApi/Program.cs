@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ModelContext>(options => options.UseSqlServer(buil
 
 //Configuracion del repositorio
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IJobOfferRepository, JobOfferRepository>();
 
 var app = builder.Build();
 

@@ -67,7 +67,7 @@ namespace SistemaGestionOfertas.Controllers
             return View(jobOfferDto);
         }
 
-        public JobOfferDto JobOfferToDto(JobOffer joboffer, bool user = false)
+        private JobOfferDto JobOfferToDto(JobOffer joboffer, bool user = false)
         {
             var jobOfferDto = new JobOfferDto
             {
@@ -222,7 +222,8 @@ namespace SistemaGestionOfertas.Controllers
         [Authorize(Roles = "Admin,Recruiter")]
         public IActionResult Delete(int id)
         {
-            if (jobOfferRepository.DeleteJobOffer(id))
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (jobOfferRepository.DeleteJobOffer(id, userId))
             {
                 return RedirectToAction(nameof(Admin));
             }
